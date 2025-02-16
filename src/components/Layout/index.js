@@ -1,9 +1,12 @@
 import { Outlet } from "react-router-dom";
+import { Container } from "./styles";
+import Menu from "../Menu";
 
 export default function Layout() {
     return (
-        <div>
+        <Container>
+            <Menu />
             <Outlet />
-        </div>
+        </Container>
     )
 }
