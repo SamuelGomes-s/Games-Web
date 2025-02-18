@@ -14,4 +14,5 @@ const Content = styled.div`
     z-index: 999;
     margin: 0 auto;
     margin-top: 15px;
+    padding-bottom: 300px;
 `;
