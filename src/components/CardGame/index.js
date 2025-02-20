@@ -9,23 +9,23 @@ export default function CardGame({ data }) {
     function handlePlataformIcon(slug) {
         if (slug === 'pc') {
             return (
-                <FaComputer />
+                <FaComputer key={slug} />
             );
         } else if (slug === 'xbox') {
             return (
-                <FaXbox />
+                <FaXbox key={slug} />
             );
         } else if (slug === 'playstation') {
             return (
-                <FaPlaystation />
+                <FaPlaystation key={slug} />
             );
         } else if (slug === 'nintendo') {
             return (
-                <BsNintendoSwitch />
+                <BsNintendoSwitch key={slug} />
             );
         } else {
             return (
-                <FaRegQuestionCircle />
+                <FaRegQuestionCircle key={slug} />
             );
         };
     };
