@@ -27,7 +27,7 @@ export const router = createBrowserRouter([
         element: <Favorite />,
       },
       {
-        path: '/detail/:id/:name',
+        path: '/detail/:id',
         element: <Detail />,
       }
     ]

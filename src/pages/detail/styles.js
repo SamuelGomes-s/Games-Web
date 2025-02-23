@@ -63,6 +63,7 @@ const Image = styled.img`
     width: 100%;
     max-width: 800px;
     height: auto;
+    max-height: 800px;
     object-fit: cover;
     display: block;
     margin: 0 auto;
