@@ -8,7 +8,7 @@ import CardGame from "../../components/CardGame";
 export default function Home() {
 
   const [inputValue, setInputValue] = useState('');
-  const [gamesList, setListGames] = useState([])
+  const [listGames, setListGames] = useState([])
 
   useEffect(() => {
     loadGames()
@@ -32,7 +32,6 @@ export default function Home() {
   }
 
   function handleSearch() {
-
   }
 
   return (
@@ -45,7 +44,7 @@ export default function Home() {
         $onClickBtn={handleSearch}
       />
       <AreaList>
-        {gamesList.map((item) => <CardGame key={item.id} data={item} />)}
+        {listGames.map((item) => <CardGame key={item.id} data={item} />)}
       </AreaList>
     </Container>
   );
