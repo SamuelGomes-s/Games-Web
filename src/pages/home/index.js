@@ -31,7 +31,25 @@ export default function Home() {
     }
   }
 
-  function handleSearch() {
+  async function handleSearch() {
+    if (!inputValue) {
+      return
+    }
+    try {
+      const response = await rawgApi.get('/games', {
+        params: {
+          page: 1,
+          search: inputValue,
+          page_size: 10,
+          ordering: "rating_top",
+          key: tokenRawg
+        }
+      })
+      setListGames(response.data.results)
+      console.log(response.data.results)
+    } catch (error) {
+      console.log(error.message)
+    }
   }
 
   return (

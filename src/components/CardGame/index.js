@@ -52,7 +52,7 @@ export default function CardGame({ data }) {
                     </div>
                 )}
                 {<Logo
-                    src={data?.short_screenshots[0]?.image}
+                    src={data?.short_screenshots.length === 0  ? require('../../assets/image-not-found-icon.png') : data?.short_screenshots[0]?.image }
                     onLoad={() => {
                         setImageLoaded(true)
                     }}
