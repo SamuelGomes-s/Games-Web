@@ -101,11 +101,11 @@ export default function Category() {
       <AreaList>
         {(listGames?.map((item) => <CardGame key={item.id} data={item} />))}
       </AreaList>
-      <div style={{ width: '100%', marginTop: 50, marginBottom: 50, justifyContent: 'center', display: 'flex' }}>
+      {!loadingGenres && listGames.length !== 0 && (<div style={{ width: '100%', marginTop: 50, marginBottom: 50, justifyContent: 'center', display: 'flex' }}>
         <Button onClick={handleMoreGames} disabled={loadingGames} style={{ width: '100%', }}>
           {loadingGames ? <div style={{ width: '100%', display: 'flex', justifyContent: "center", alignItems: "center" }}><Loader /></div> : 'Buscar mais jogos'}
         </Button>
-      </div>
+      </div>)}
     </Container>
   )
 }

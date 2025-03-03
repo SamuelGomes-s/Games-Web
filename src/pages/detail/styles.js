@@ -85,17 +85,13 @@ const SaveBtn = styled.button`
     border: 1px solid #FF455F;
     border-radius: 50%;
     background-color:#0F172A;
-
     cursor: pointer;
     transition: ease-in-out 0.6s;
     &:hover{
-    color: #FF455F;
-    border: 1px solid #64748B;
-
+        color: #FF455F;
+        border: 1px solid #64748B;
     }
 `;
-
-//  color="#FFBB00"
 
 export {
     Content,

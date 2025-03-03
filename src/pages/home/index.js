@@ -13,6 +13,7 @@ export default function Home() {
   const [isEmpyt, setIsEmpyt] = useState(false)
   const [loadingMoreGames, setLoadinMoreGames] = useState(false)
   const [loadingGames, setLoadingGames] = useState(true)
+  const [loadingSearch, setLoadingSearch] = useState(false)
   const [page, setPage] = useState(1)
 
   useEffect(() => {
@@ -34,7 +35,7 @@ export default function Home() {
         setIsEmpyt(true)
       }
       const data = response.data.results
-      const newGames = data.filter(game => 
+      const newGames = data.filter(game =>
         !listGames.some(existingGame => existingGame.id === game.id)
       );
       setPage(nextPage)
@@ -52,12 +53,13 @@ export default function Home() {
       loadGames()
       return
     }
+    setLoadingSearch(true)
     try {
       const response = await rawgApi.get('/games', {
         params: {
           page: 1,
           search: inputValue,
-          page_size:10,
+          page_size: 10,
           ordering: "rating_top",
           key: tokenRawg
         }
@@ -65,6 +67,8 @@ export default function Home() {
       setListGames(response.data.results)
     } catch (error) {
       console.log(error.message)
+    }finally{
+      setLoadingSearch(false)
     }
   }
 
@@ -94,6 +98,7 @@ export default function Home() {
             value={inputValue}
             disabled={loadingMoreGames}
             onChange={(e) => setInputValue(e.target.value)}
+            $loader={loadingSearch}
             $onClickBtn={handleSearch}
           />
           <AreaList>

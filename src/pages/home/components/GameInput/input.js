@@ -1,15 +1,16 @@
 import { IoMdSearch } from "react-icons/io";
 import { ContentInput, Input, SearchButton } from "./styles";
+import Loader from "../../../../components/Loader";
 
-export default function GameInput({ $onClickBtn, ...props }) {
+export default function GameInput({ $loader, $onClickBtn, ...props }) {
     return (
         <ContentInput>
             <Input
                 {...props}
             />
-            <SearchButton onClick={$onClickBtn}>
+            {$loader ? <Loader /> : <SearchButton onClick={$onClickBtn} >
                 <IoMdSearch size={30} />
-            </SearchButton>
+            </SearchButton>}
         </ContentInput>
     )
 }
