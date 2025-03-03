@@ -76,6 +76,25 @@ const PlatformContent = styled.div`
     gap: 10px;
 `;
 
+const SaveBtn = styled.button`
+    color: #64748B;
+    z-index: 99;
+    position: absolute;
+    right: 5%;
+    padding: 1em;
+    border: 1px solid #FF455F;
+    border-radius: 50%;
+    background-color:#0F172A;
+
+    cursor: pointer;
+    transition: ease-in-out 0.6s;
+    &:hover{
+    color: #FF455F;
+    border: 1px solid #64748B;
+
+    }
+`;
+
 //  color="#FFBB00"
 
 export {
@@ -88,5 +107,6 @@ export {
     Text,
     AreaName,
     Image,
-    PlatformContent
+    PlatformContent,
+    SaveBtn
 };

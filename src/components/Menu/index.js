@@ -2,15 +2,12 @@ import { Container, LinkStyled } from "./styles";
 import { MdGames, MdHome } from "react-icons/md";
 import { IoMdHeart } from "react-icons/io";
 import { TbCategoryFilled } from "react-icons/tb";
-import { useNavigate } from "react-router-dom";
 
 export default function Menu() {
 
-    const navigation = useNavigate();
-
     return (
         <Container>
-            <button onClick={() => navigation('/')}>
+            <button onClick={() => window.location.href = '/'}>
                 <span
                     style={{
                         justifyContent: 'center',
@@ -23,18 +20,18 @@ export default function Menu() {
                         WebkitBackgroundClip: "text",
                         WebkitTextFillColor: "transparent"
                     }}>
-                    Games<MdGames size={35} color="#FF758C"/>Web
+                    Games<MdGames size={35} color="#FF758C" />Web
                 </span>
             </button>
-            <LinkStyled to={'/'}>
+            <LinkStyled onClick={() => window.location.href = '/'}>
                 <MdHome size={35} />
                 Home
             </LinkStyled>
-            <LinkStyled to={'/favorites'}>
+            <LinkStyled onClick={() => window.location.href = '/favorites'}  >
                 <IoMdHeart size={35} />
                 Favoritos
             </LinkStyled>
-            <LinkStyled to={'/category'}>
+            <LinkStyled onClick={() => window.location.href = '/category'} >
                 <TbCategoryFilled size={35} />
                 Categorias
             </LinkStyled>

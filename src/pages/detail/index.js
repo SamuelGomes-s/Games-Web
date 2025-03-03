@@ -12,14 +12,16 @@ import {
   Text,
   AreaName,
   Image,
-  PlatformContent
+  PlatformContent,
+  SaveBtn
 } from "./styles"
 import { FaComputer, FaPlaystation, FaStar, FaXbox } from "react-icons/fa6"
 import { BsNintendoSwitch } from "react-icons/bs"
-import { FaRegQuestionCircle } from "react-icons/fa"
+import { FaRegQuestionCircle, FaSave } from "react-icons/fa"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { A11y, Navigation, Pagination, Scrollbar } from "swiper/modules"
 import Loader from "../../components/Loader"
+import { toast } from "react-toastify"
 
 export default function Detail() {
 
@@ -29,6 +31,21 @@ export default function Detail() {
   const [listImages, setListImages] = useState([])
   const [loading, setLoading] = useState(true)
   const [imagesLoaded, setImagesLoaded] = useState(false);
+
+  function handleFavorite() {
+    const required = JSON.parse(localStorage.getItem('@game_id')) || []
+    if (!game?.id) {
+      toast.error('Erro ao salvar jogo: ID inválido.')
+      return
+    }
+    if (required.includes(game?.id)) {
+      toast.error('O jogo já foi salvo como favorito.')
+      return
+    }
+    localStorage.setItem('@game_id', JSON.stringify([...required, game.id]))
+    toast.success('Jogo salvado como favorito.')
+  }
+
 
   function handlePlataformIcon(slug) {
     if (slug === 'pc') {
@@ -76,11 +93,9 @@ export default function Detail() {
           signal
         })
         setListImages(screenshots?.data?.results || [])
-        console.log(screenshots?.data?.results)
       } catch (error) {
         console.log(error.message)
       }
-      console.log(response?.data)
       setGame(response?.data || null)
     } catch (error) {
       if (error.name !== "AbortError") {
@@ -151,6 +166,9 @@ export default function Detail() {
             )))}
         </Swiper>
         <Content>
+          <SaveBtn onClick={handleFavorite}>
+            <FaSave size={25} />
+          </SaveBtn>
           <AreaName>
             <Name>
               {game?.name}
@@ -198,5 +216,4 @@ export default function Detail() {
       </>)}
     </Container>
   )
-
 }
